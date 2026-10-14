@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KARTU GAMBAR LELANG 2075 - FULL MUSIC</title>
+    <meta
+      name="description"
+      content="Permainan duel kartu Lelang 2075 dengan musik, sound effect, dan layar responsif."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Informasi permainan">
+      <div class="brand">
+        <span>LELANG 2075 TCG</span>
+        <span class="accent">| GOLD</span>
+        <span id="gold" aria-live="polite">0</span>
+      </div>
+      <div class="scoreboard" aria-live="polite">
+        <span>MENANG <strong id="win">0</strong></span>
+        <span>-</span>
+        <span>KALAH <strong id="lose">0</strong></span>
+      </div>
+    </header>
+
+    <div class="music-bar" aria-label="Kontrol musik">
+      <span class="music-label">♫ <span id="musicStatus">BGM OFF</span></span>
+      <span class="beat" aria-hidden="true"></span>
+      <span class="beat beat-delay-1" aria-hidden="true"></span>
+      <span class="beat beat-delay-2" aria-hidden="true"></span>
+      <button
+        id="musicToggle"
+        class="toggle-button"
+        type="button"
+        aria-label="Nyalakan atau matikan musik latar belakang"
+        aria-pressed="false"
+      >
+        ON/OFF
+      </button>
+    </div>
+
+    <main>
+      <section class="title-wrap">
+        <h1>KARTU GAMBAR ADU POWER - FULL MUSIC EDITION</h1>
+      </section>
+
+      <div id="log" class="status-log" role="status" aria-live="polite">
+        Tap layar untuk aktifkan musik! Pilih kartu kamu di bawah!
+      </div>
+
+      <section id="arena" class="arena" aria-label="Arena duel">
+        <div class="slot" id="mySlot">
+          <div class="slot-label">KARTU KAMU</div>
+          <div
+            id="myCard"
+            class="card-display empty"
+            aria-live="polite"
+            aria-label="Kartu milik pemain belum dipilih"
+          >
+            Belum pilih
+          </div>
+        </div>
+
+        <div class="versus" aria-hidden="true">VS</div>
+
+        <div class="slot" id="botSlot">
+          <div class="slot-label">KARTU BOT</div>
+          <div
+            id="botCard"
+            class="card-display enemy empty"
+            aria-live="polite"
+            aria-label="Kartu lawan belum muncul"
+          >
+            ???
+          </div>
+        </div>
+      </section>
+
+      <section class="duel-actions" aria-label="Pilihan duel">
+        <button class="action-btn gold" type="button" data-duel="speed">⚡ ADU SPEED</button>
+        <button class="action-btn gold" type="button" data-duel="power">💥 ADU POWER</button>
+        <button class="action-btn gold" type="button" data-duel="vip">👑 ADU VIP WINGS</button>
+        <button id="newHandBtn" class="action-btn" type="button">🔄 GANTI HAND</button>
+      </section>
+
+      <section id="hand" class="hand" aria-label="Daftar kartu di tangan pemain"></section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

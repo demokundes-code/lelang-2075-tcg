@@ -1,0 +1,349 @@
+:root {
+  --bg-1: #0a1a3a;
+  --bg-2: #020a12;
+  --panel: rgba(0, 0, 0, 0.7);
+  --gold: #ffd700;
+  --cyan: #00eaff;
+  --pink: #ff4fe7;
+  --green: #00ff99;
+  --text: #9ef;
+  --text-soft: #8cb5c7;
+  --border: rgba(0, 234, 255, 0.75);
+  --shadow-gold: rgba(255, 215, 0, 0.7);
+  --shadow-cyan: rgba(0, 234, 255, 0.6);
+  --shadow-green: rgba(0, 255, 153, 0.7);
+  --shadow-pink: rgba(255, 79, 231, 0.7);
+  --card-width: 155px;
+  --slot-width: 170px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(ellipse at top, #0a1a3a 0%, #020a12 100%);
+  color: var(--text);
+  font-family: monospace;
+}
+
+button,
+.card {
+  font: inherit;
+}
+
+button:focus-visible,
+.card:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 12px 18px;
+  background: linear-gradient(90deg, #0a1a2a, #1a0a2a 50%, #0a1a2a);
+  border-bottom: 2px solid var(--gold);
+  box-shadow: 0 0 15px var(--shadow-gold);
+  z-index: 10;
+  font-weight: 700;
+}
+
+.brand,
+.scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.accent {
+  color: var(--gold);
+}
+
+#gold,
+#win,
+#lose {
+  color: var(--gold);
+}
+
+.music-bar {
+  position: fixed;
+  top: 62px;
+  right: 10px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 11px;
+  box-shadow: 0 0 10px var(--shadow-cyan);
+}
+
+.music-label {
+  white-space: nowrap;
+}
+
+.beat {
+  display: inline-block;
+  width: 4px;
+  height: 12px;
+  background: var(--cyan);
+  animation: beat 0.5s infinite ease-in-out;
+}
+
+.beat-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.beat-delay-2 {
+  animation-delay: 0.2s;
+}
+
+@keyframes beat {
+  0%,
+  100% {
+    height: 4px;
+    background: var(--cyan);
+  }
+  50% {
+    height: 16px;
+    background: var(--gold);
+  }
+}
+
+.toggle-button,
+.action-btn {
+  padding: 10px 18px;
+  margin: 6px;
+  border: 2px solid var(--cyan);
+  border-radius: 10px;
+  background: rgba(0, 255, 255, 0.15);
+  color: var(--cyan);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--shadow-cyan);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+}
+
+.toggle-button {
+  padding: 2px 8px;
+  font-size: 10px;
+  margin-left: 6px;
+}
+
+.action-btn.gold {
+  background: linear-gradient(var(--gold), #ffcc00);
+  border: none;
+  color: #000;
+  box-shadow: 0 0 15px var(--shadow-gold);
+  font-size: 14px;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+button:disabled {
+  opacity: 0.52;
+  cursor: not-allowed;
+}
+
+main {
+  padding: 18px 12px 42px;
+}
+
+.title-wrap {
+  text-align: center;
+  padding: 10px 0 0;
+}
+
+h1 {
+  color: var(--gold);
+  text-shadow: 0 0 10px var(--shadow-gold);
+  font-size: clamp(1.1rem, 2vw, 2rem);
+}
+
+.status-log {
+  margin: 12px auto;
+  width: min(92vw, 900px);
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  color: var(--green);
+  text-align: center;
+  box-shadow: inset 0 0 12px rgba(0, 255, 153, 0.25);
+}
+
+.arena {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px auto 10px;
+  width: min(100%, 820px);
+}
+
+.slot {
+  text-align: center;
+}
+
+.slot-label {
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.card-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--slot-width);
+  min-height: 180px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px dashed rgba(0, 234, 255, 0.5);
+  background: rgba(10, 19, 30, 0.7);
+  color: var(--text-soft);
+  text-align: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-display.enemy {
+  border-style: dashed;
+  border-color: rgba(255, 79, 231, 0.6);
+}
+
+.card-display.empty {
+  border-style: dashed;
+}
+
+.versus {
+  padding-top: 60px;
+  font-size: clamp(1.5rem, 2vw, 2.4rem);
+  color: var(--gold);
+  text-shadow: 0 0 10px var(--shadow-gold);
+}
+
+.duel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.hand {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px 10px 0;
+}
+
+.card {
+  width: var(--card-width);
+  display: inline-block;
+  margin: 6px;
+  padding: 10px;
+  background: linear-gradient(180deg, #1a2a4a, #0f233a);
+  border: 2px solid var(--gold);
+  border-radius: 14px;
+  box-shadow: 0 0 10px var(--shadow-gold);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  text-align: left;
+  vertical-align: top;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 0 20px var(--shadow-gold);
+}
+
+.card.selected {
+  border-color: var(--green);
+  box-shadow: 0 0 25px var(--shadow-green);
+  transform: scale(1.08);
+}
+
+.card.bot {
+  border-color: var(--pink);
+  box-shadow: 0 0 10px var(--shadow-pink);
+}
+
+.card-rarity {
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 6px 0 8px;
+  line-height: 1.3;
+}
+
+.stat {
+  margin: 3px 0;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 234, 255, 0.8);
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.stat strong {
+  color: var(--gold);
+  float: right;
+}
+
+.card-ability {
+  margin-top: 6px;
+  font-size: 9px;
+  color: #8ef;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .music-bar {
+    position: static;
+    width: fit-content;
+    margin: 12px auto 0;
+  }
+
+  .arena {
+    gap: 18px;
+  }
+
+  .versus {
+    padding-top: 0;
+  }
+}
